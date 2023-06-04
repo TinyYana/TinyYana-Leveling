@@ -1,0 +1,23 @@
+{
+  "name": "tinyyana-leveling",
+  "version": "1.0.0",
+  "description": "A Leveling System module, based on typescript.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "leveling",
+    "discord",
+    "bot"
+  ],
+  "author": "TinyYana",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.2.5"
+  },
+  "dependencies": {
+    "typescript": "^5.1.3"
+  }
+}
