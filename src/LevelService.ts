@@ -20,6 +20,7 @@ class LevelService {
             memberData[id].experience += exp;
             if (this.canLevelUp(id)) {
                 await this.addLevel(id, 1);
+                await this.setExperience(id, 0);
             }
             await this.saveMemberData(memberData);
         }
@@ -116,6 +117,42 @@ class LevelService {
         if (memberData[id]) {
             memberData[id].currency = amount;
             await this.saveMemberData(memberData);
+        }
+    }
+
+    /**
+     * Set the level of a member by id.
+     * @param {string} id - The id of the member.
+     * @param {number} level - The level to set.
+     * @returns {Promise<void>} A promise that resolves when the member data is saved.
+     * @throws {Error} If the id is not found in the member data.
+     * @static
+     * @async
+     */
+    static async setLevel(id: string, level: number): Promise<void> {
+        if (memberData[id]) {
+            memberData[id].level = level;
+            await this.saveMemberData(memberData);
+        } else {
+            throw new Error(`Member with id ${id} not found`);
+        }
+    }
+
+    /**
+     * Set the experience of a member by id.
+     * @param {string} id - The id of the member.
+     * @param {number} experience - The experience to set.
+     * @returns {Promise<void>} A promise that resolves when the member data is saved.
+     * @throws {Error} If the id is not found in the member data.
+     * @static
+     * @async
+     */
+    static async setExperience(id: string, experience: number): Promise<void> {
+        if (memberData[id]) {
+            memberData[id].experience = experience;
+            await this.saveMemberData(memberData);
+        } else {
+            throw new Error(`Member with id ${id} not found`);
         }
     }
 
